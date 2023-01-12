@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.shl": "shellscript",
+        "iostream": "cpp"
+    }
+}
