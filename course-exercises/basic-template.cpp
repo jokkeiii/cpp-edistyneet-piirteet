@@ -1,4 +1,4 @@
-// x. excersice of round x
+// x. exercise of round x
 // Short program explanation
 
 #include<iostream>

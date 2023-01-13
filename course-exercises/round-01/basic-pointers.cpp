@@ -1,4 +1,4 @@
-// 1. excersice of round 1
+// 1. exercise of round 1
 // Short programn explanation
 
 #include<iostream>
