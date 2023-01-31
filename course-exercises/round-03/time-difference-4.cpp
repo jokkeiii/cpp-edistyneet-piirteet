@@ -56,11 +56,23 @@ time_ty timeDifference(time_ty time_first, time_ty time_second) {
     // initializing variable from the structure
     time_ty time_calculated;
 
-    time_calculated.hours = time_first.hours - time_second.hours;
+    // initializing pointers to time calculated minutes and seconds
+    int *time_calculated_minutes_p = &time_calculated.minutes, *time_calculated_seconds_p = &time_calculated.seconds;
 
-    time_calculated.minutes = time_first.minutes - time_second.minutes;
+    // declaring variables for conversion and result
+    int time_first_in_seconds, time_second_in_seconds, time_difference;
 
-    time_calculated.seconds = time_first.seconds - time_second.seconds;
+    // calling function with first numbers and assigning result to variable
+    time_first_in_seconds = timeToSeconds(time_first.hours, time_first.minutes, time_first.seconds);
+
+    // calling function with second numbers and assigning result to variable
+    time_second_in_seconds = timeToSeconds(time_second.hours, time_second.minutes, time_second.seconds);
+
+    // calculating the difference in seconds
+    time_difference = time_first_in_seconds - time_second_in_seconds;
+
+    // calling function to convert seconds to time and assigning return to variable
+    time_calculated.hours = secondsToTime(time_difference, time_calculated_minutes_p, time_calculated_seconds_p);
 
     // return the calculated structure contents
     return time_calculated;
@@ -70,8 +82,7 @@ int main() {
     
     // initializing 2 variables from the structure
     time_ty time_first, time_second, time_result;
-
-    int first_time_in_seconds, second_time_in_seconds;
+    // variable to do-while loops
     bool can_continue = true;
 
 // inputs of first structure
@@ -215,11 +226,11 @@ int main() {
     // if can_continue is not true loop back
     } while (!can_continue);
 
-
     // calling function with first and second structures
     // and assigning the return to third structure
     time_result = timeDifference(time_first, time_second);
 
+    // printing out the results
     cout << "The time difference is " << time_result.hours << " hours, " << time_result.minutes << " minutes and " << time_result.seconds << " seconds." << endl; 
 
     return 0;
